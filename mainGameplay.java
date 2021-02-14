@@ -25,10 +25,6 @@ public class mainGameplay extends JFrame {
 		bg.setVisible(true);
 	}
 
-public mainGameplay() {
-		
-	}
-
 	public void main() {
 		
 	}
