@@ -23,20 +23,25 @@ public static void main(String[] args) {
 		//Obstacle temp2 = logLane.get(0);
 		window.add(temp.obstacle);
 		
-		Timer timer = new Timer();
-		TimerTask tt = new TimerTask() {
+//		Timer timer2 = new Timer();
+/*		TimerTask tt = new TimerTask() {
 			public void run() {
-				temp.move(10);
-					if (count.value() >= 5) {
-						timer.cancel();
+				while (temp.numMoves <= 6) {
+					temp.move(20);	
+				}
+			}
+		}; */
+		
+		while (temp.numMoves <= 5) {
+			Timer timer = new Timer();
+			timer.schedule(new TimerTask() {
+				public void run() {
+					if (temp.numMoves <= 1) {
+					temp.move(10);
 					}
 				}
-		};
-		while (count.value() < 10) {
-			timer.schedule(tt, 9000,9000);
-			count.update();
-			timer.cancel();
-		}	
+			}, 900, 900);
+		}
 		
 		
 			/*
