@@ -5,36 +5,36 @@ import javax.imageio.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.awt.image.ImageObserver;
-import java.text.AttributedCharacterIterator;
 import javax.swing.*;
+import java.lang.String;
 
 
-public class Log {
-
-	JPanel log = new JPanel();
-	int x, y;
-	int logWidth = 20, logHeight = 10;
+public class Obstacle {
 	
-	Log (int x, int y) {
+	JPanel obstacle = new JPanel();
+	int x, y;
+	int obstacleWidth = 50, obstacleHeight = 30;
+	
+	Obstacle (int x, int y, String path) {
 		this.x = x;
 		this.y = y;
-		log.setBounds(x,y,logWidth,logHeight);
+		obstacle.setBounds(x,y,obstacleWidth,obstacleHeight);
 		BufferedImage img = null;
 		try {
-			img = ImageIO.read(new File("src/log.png"));
+			img = ImageIO.read(new File(path));
 		} catch (IOException e) {
+			
 		}
 		JLabel skin = new JLabel(new ImageIcon(img));
-		skin.setIcon(new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(logWidth, logHeight, Image.SCALE_DEFAULT)));
-		skin.setBounds(0,0,logWidth, logHeight);
-		log.add(skin);
+		skin.setIcon(new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(obstacleWidth, obstacleHeight, Image.SCALE_DEFAULT)));
+		skin.setBounds(0,0,obstacleWidth, obstacleHeight);
+		obstacle.add(skin);
 		
 	}
 
 	public void move (int stepSize) {
 		x += stepSize;
-		log.setBounds(x, y, logWidth, logHeight);
+		obstacle.setBounds(x, y, obstacleWidth, obstacleHeight);
 	}
 	
 	public int getX() {
@@ -46,12 +46,12 @@ public class Log {
 	}
 	
 	public int getHeight() {
-		return logHeight;
+		return obstacleHeight;
 	}
 	
 	public int getWidth() {
-		return logWidth;
+		return obstacleWidth;
 	}
 	
 }
-	
+
