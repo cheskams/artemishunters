@@ -9,6 +9,5 @@ class Test {
             e.printStackTrace();
         }*/
         Beaver beaver = new Beaver(100,100);
-        beaver.moveBeaver();
     }
 }

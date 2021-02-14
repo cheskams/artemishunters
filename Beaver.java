@@ -11,28 +11,21 @@ import java.awt.Graphics;
 
 public class Beaver extends Component implements KeyListener{
 
-    /**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	JPanel beaver = new JPanel();
     int x, y;
     private int beaverHeight = 200;
     private int beaverWidth = 200;
-	up = false;
-	down = false;
-	left = false;
-	right = false;
 	//list of keys
-	private boolean[] keys;
-	public boolean up, down, left, right;
-    KeyListener keyManager;
-
+	boolean up = false;
+	boolean down = false;
+	boolean left = false;
+	boolean right = false;
 
     public Beaver(int x, int y){
         this.x = x;
         this.y = y;
-        //keyManager = new KeyManagerGUI();
 		beaver.setBounds(x,y,beaverWidth,beaverHeight);
 		BufferedImage img = null;
 		try {
@@ -41,7 +34,7 @@ public class Beaver extends Component implements KeyListener{
         }
         JFrame frame = new JFrame();
         JLabel skin = new JLabel(new ImageIcon(img));
-        frame.addKeyListener(keyManager);
+        frame.addKeyListener(this);
 		skin.setIcon(new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(beaverWidth, beaverHeight, Image.SCALE_DEFAULT)));
 		skin.setBounds(0,0,beaverWidth, beaverHeight);
         beaver.add(skin);
@@ -53,31 +46,6 @@ public class Beaver extends Component implements KeyListener{
     }
     
 
-    public void moveBeaver(){
-        while(true){
-//        	boolean b = keyManager.up;
-//        	System.out.println("Up:" + String.valueOf(b));
-            if(up == true){
-                System.out.println("UP UP AND AWAY!");
-                y -= 50;
-                beaver.setBounds(x,y,beaverWidth, beaverHeight);
-            }
-            if(down == true){
-                y += 50;
-                beaver.setBounds(x,y,beaverWidth, beaverHeight);
-            }
-            if(right == true){
-                x += 50;
-                beaver.setBounds(x,y, beaverWidth, beaverHeight);
-            }
-            if(left == true){
-                x -= 50;
-                beaver.setBounds(x,y, beaverWidth, beaverHeight);
-            }
-            
-        }
-    }
-    
 	/*event handler for keyBeing typed.
 	 * 
 	 */
@@ -90,19 +58,27 @@ public class Beaver extends Component implements KeyListener{
 	public void keyPressed(KeyEvent e)
 	{
 		//checks if a key has been pressed
-//		System.out.println("A key has been pressed!");
+		System.out.println("A key has been pressed!");
 		if(e.getKeyCode() == KeyEvent.VK_W){
-			System.out.println("Up pressed!");
-			up = true;
-		}
-		if(e.getKeyCode() == KeyEvent.VK_S){
-			down = true;
-		}
-		if(e.getKeyCode() == KeyEvent.VK_D){
-		    right = true;
-		}
-		if(e.getKeyCode() == KeyEvent.VK_A){
-			left = true;
+			System.out.println("UP UP AND AWAY!");
+			y -= 50;
+			beaver.setBounds(x,y,beaverWidth, beaverHeight);
+			repaint();
+		}else if(e.getKeyCode() == KeyEvent.VK_S){
+			System.out.println("Move down!");
+	        y += 50;
+            beaver.setBounds(x,y,beaverWidth, beaverHeight);
+            repaint();
+		}else if(e.getKeyCode() == KeyEvent.VK_D){
+			System.out.println("Move right!");
+			x += 50;
+            beaver.setBounds(x,y, beaverWidth, beaverHeight);
+            repaint();
+		}else if(e.getKeyCode() == KeyEvent.VK_A){
+			System.out.println("Move left!");
+			x -= 50;
+			beaver.setBounds(x,y, beaverWidth, beaverHeight);
+			repaint();
 		}
 		
 	}
