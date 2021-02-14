@@ -1,8 +1,11 @@
 import java.awt.*;
+import java.awt.image.ImageObserver;
+import java.text.AttributedCharacterIterator;
+
 import javax.swing.*;
 
 
-public class Log extends Component {
+public class Log {
 
 	JPanel log = new JPanel();
 	int x, y;
@@ -20,5 +23,22 @@ public class Log extends Component {
 		x += stepSize;
 		log.setBounds(x, y, logWidth, logHeight);
 	}
+	
+	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
+		return y;
+	}
+	
+	public int getHeight() {
+		return logHeight;
+	}
+	
+	public int getWidth() {
+		return logWidth;
+	}
+	
 }
 	
