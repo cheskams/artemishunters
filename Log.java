@@ -20,5 +20,5 @@ public class Log extends Component {
 		x += stepSize;
 		log.setBounds(x, y, logWidth, logHeight);
 	}
-
+}
 	
