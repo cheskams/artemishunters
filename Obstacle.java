@@ -13,7 +13,8 @@ public class Obstacle {
 	
 	JPanel obstacle = new JPanel();
 	int x, y;
-	int obstacleWidth = 50, obstacleHeight = 30;
+	int obstacleWidth = 300, obstacleHeight = 190;
+	int numMoves = 0;
 	
 	Obstacle (int x, int y, String path) {
 		this.x = x;
@@ -35,6 +36,11 @@ public class Obstacle {
 	public void move (int stepSize) {
 		x += stepSize;
 		obstacle.setBounds(x, y, obstacleWidth, obstacleHeight);
+		numMoves++;
+	}
+	
+	public void hangout() {
+		
 	}
 	
 	public int getX() {
@@ -52,6 +58,25 @@ public class Obstacle {
 	public int getWidth() {
 		return obstacleWidth;
 	}
-	
+/*
+	public static void main(String[] args) {
+		
+		JFrame window = new JFrame("test");
+		Obstacle test = new Obstacle (10,10,"src/log.png");
+		
+		window.add(test.obstacle);
+		window.setBounds(500,500,500,500);
+		window.setLayout(null);
+		window.setVisible(true);
+		
+		for (int i = 0; i < 20; i++) {
+			Timer timer = new Timer();
+			timer.schedule(new TimerTask() {
+				public void run() {
+					test.move(2);
+				}
+			}, 900, 900);
+		}		
+	}	*/
 }
 
