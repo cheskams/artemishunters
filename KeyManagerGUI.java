@@ -1,13 +1,15 @@
+import java.awt.event.KeyEvent;  
+import java.awt.event.KeyListener;
 
-public class KeyMangerGUI implements KeyListener
+public class KeyManagerGUI implements KeyListener
 {
 	//list of keys
 	private boolean[] keys;
-    public KeyMangerGUI ()
+    public KeyManagerGUI ()
 	{
 		keys = new boolean[256];
 	}
-
+ 
 	/*event handler for keyBeing typed.
 	 * 
 	 */
