@@ -8,6 +8,6 @@ class Test {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }*/
-        Beaver beaver = new Beaver(500,600);
+        Beaver beaver = new Beaver(0,0);
     }
 }

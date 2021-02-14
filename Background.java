@@ -81,10 +81,14 @@ public class Background extends JFrame {
         frame.add(contentPane);
         frame.setResizable(false);
         frame.setBounds(100, 100, FRAME_WIDTH, FRAME_HEIGHT);
-        frame.setVisible(true);
+        //frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    public JFrame getBackFrame() {
+    	return frame;
+    }
+    
     public static void main(String[] args) throws IOException {
         new Background();
     }

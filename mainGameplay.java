@@ -1,31 +1,72 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import java.io.File;
 import java.io.IOException;
 
-import javax.swing.SwingUtilities;
-
-public class mainGameplay extends JFrame {
+public class mainGameplay extends JPanel implements KeyListener{
+	
+	private static final long serialVersionUID = 1L;
+	private JFrame frame;
+//	private JLabel beaver;
+	private Background bg;
 	private Beaver player;
+	private static ImageIcon beaverIcon;
+	private JLabel skin = new JLabel();
 	private ArrayList<Obstacle> logs;
 	private ArrayList<Obstacle> cars;
 	private int hearts=3;
 	//constantly check for user key input(which is going to call beaver to move the beaver)
 
 	public mainGameplay() {
-		Background bg = null;
+		this.addKeyListener(this);
+		setUpGraphics();
+		main();
+	}
+
+	public void setUpGraphics() {
+		System.out.println("blahblahblahblah");
+		bg = null;
 		try {
 			bg = new Background();
 		} catch (IOException ioException) {
 			ioException.printStackTrace();
 		}
-
-		bg.setVisible(true);
+		frame = bg.getBackFrame();
+		player = new Beaver(0,0);
+		BufferedImage img = null;
+		try {
+			img = ImageIO.read(new File("Beaver.png"));
+		} catch (IOException e) {
+        };
+		beaverIcon = new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(player.getWidth(), player.getHeight(), Image.SCALE_DEFAULT));
+		skin.setIcon(beaverIcon);
+		skin.setBounds(player.getX(), player.getY(), player.getWidth(), player.getHeight());
+		skin.setBackground(Color.red);
+		skin.setOpaque(false);
+		frame.add(skin, BorderLayout.CENTER);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-
+//	public void draw(Graphics g) {
+//		g.dispose();
+//		g.drawImage(beaver, 0, 0, frame);
+//		repaint();
+//	}
+	
 	public void main() {
 		
 	}
@@ -84,6 +125,35 @@ public class mainGameplay extends JFrame {
 	
 	public void gameOver() {
 		//Options to exit game or reset game
+	}
+	
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		switch(e.getKeyChar()) {
+		case 'a': skin.setLocation(skin.getX()-10, skin.getY());
+			break;
+		case 'd': skin.setLocation(skin.getX()+10, skin.getY());
+			break;
+		case 'w': skin.setLocation(skin.getX(), skin.getY()-10);
+			break;
+		case 's': skin.setLocation(skin.getX(), skin.getY()+10);
+			break;
+	}
+	}
+
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
