@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class StartPage extends JFrame {
-    public static final int WINDOW_WIDTH = 725;
-    public static final int WINDOW_HEIGHT = 820;
+    public static final int WIDTH = 725;
+    public static final int HEIGHT = 500;
 
     private JPanel panel;
     private JFrame frame;
@@ -38,7 +38,7 @@ public class StartPage extends JFrame {
 
         frame.add(panel);
         frame.setResizable(false);
-        frame.setBounds(100, 100, WINDOW_WIDTH, WINDOW_HEIGHT);
+        frame.setBounds(100, 100, WIDTH, HEIGHT);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
