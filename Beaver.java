@@ -19,19 +19,17 @@ public class Beaver{
 
     public Beaver()
 	{
-		keyManagerGUI keyManager = new keyManagerGUI();
+		KeyManagerGUI keyManager = new KeyManagerGUI();
     }
     
     public static void moveBeaver(ImageIcon icon){
         while(true){
-            if(key == 'a'){
+            //if(key == 'a'){
                 
-            }
         }
     }
-
-
- 
     
-
+//    public void getLocation() {
+//    	
+//    }
 }
