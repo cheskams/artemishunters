@@ -28,7 +28,8 @@ public class Beaver extends Component{
 		} catch (IOException e) {
         }
         JFrame frame = new JFrame();
-		JLabel skin = new JLabel(new ImageIcon(img));
+        JLabel skin = new JLabel(new ImageIcon(img));
+        frame.addKeyListener(keyManager);
 		skin.setIcon(new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(beaverWidth, beaverHeight, Image.SCALE_DEFAULT)));
 		skin.setBounds(0,0,beaverWidth, beaverHeight);
         beaver.add(skin);
@@ -42,7 +43,6 @@ public class Beaver extends Component{
 
     public void moveBeaver(){
         while(true){
-            System.out.println("Hello!");
             keyManager.check();
             if(keyManager.up == true){
                 System.out.println("UP we go!");
