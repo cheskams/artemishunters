@@ -8,44 +8,48 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Background extends JFrame {
-    public Background() throws IOException {
-        JFrame frame = new JFrame();
-        JPanel top = new JPanel();
-        JPanel middleTop = new JPanel();
-        JPanel middleBottom = new JPanel();
-        JPanel bottom = new JPanel();
+    private JPanel top, middleTop, middleBottom, bottom, contentPane;
+    private JFrame frame;
+    private JLabel topLabel, middleTopLabel, middleBottomLabel, bottomLabel;
 
-        JPanel contentPane = new JPanel();
+    public Background() throws IOException {
+        frame = new JFrame();
+        top = new JPanel();
+        middleTop = new JPanel();
+        middleBottom = new JPanel();
+        bottom = new JPanel();
+
+        contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5,5,5,5));
         contentPane.setLayout(null);
 
-        BufferedImage topImage = ImageIO.read(new FileInputStream("E:\\Hackaton 2021\\artemishunters\\Water background.png"));
-        BufferedImage bottomImage = ImageIO.read(new FileInputStream("E:\\Hackaton 2021\\artemishunters\\RoadBackground.png"));
+        BufferedImage topImage = ImageIO.read(new FileInputStream("Water background.png"));
+        BufferedImage bottomImage = ImageIO.read(new FileInputStream("RoadBackground.png"));
 
         top.setBounds(0,0,710,196);
         contentPane.add(top);
-        JLabel topLabel = new JLabel(new ImageIcon(topImage));
+        topLabel = new JLabel(new ImageIcon(topImage));
         topLabel.setIcon(new ImageIcon(new ImageIcon(topImage).getImage().getScaledInstance(710,196,Image.SCALE_DEFAULT)));
         topLabel.setBounds(0,0,710,196);
         top.add(topLabel);
 
         middleTop.setBounds(0,196,710,196);
         contentPane.add(middleTop);
-        JLabel middleTopLabel = new JLabel(new ImageIcon(topImage));
+        middleTopLabel = new JLabel(new ImageIcon(topImage));
         middleTopLabel.setIcon(new ImageIcon(new ImageIcon(topImage).getImage().getScaledInstance(710,196,Image.SCALE_DEFAULT)));
         middleTopLabel.setBounds(0,0,710,400);
         middleTop.add(middleTopLabel);
 
         middleBottom.setBounds(0,392,710,196);
         contentPane.add(middleBottom);
-        JLabel middleBottomLabel = new JLabel(new ImageIcon(bottomImage));
+        middleBottomLabel = new JLabel(new ImageIcon(bottomImage));
         middleBottomLabel.setIcon(new ImageIcon(new ImageIcon(bottomImage).getImage().getScaledInstance(710,196,Image.SCALE_DEFAULT)));
         middleBottomLabel.setBounds(0,0,710,196);
         middleBottom.add(middleBottomLabel);
 
         bottom.setBounds(0,588,710,196);
         contentPane.add(bottom);
-        JLabel bottomLabel = new JLabel(new ImageIcon(bottomImage));
+        bottomLabel = new JLabel(new ImageIcon(bottomImage));
         bottomLabel.setIcon(new ImageIcon(new ImageIcon(bottomImage).getImage().getScaledInstance(710,196,Image.SCALE_DEFAULT)));
         bottomLabel.setBounds(0,0,710,196);
         bottom.add(bottomLabel);

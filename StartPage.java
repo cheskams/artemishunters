@@ -3,21 +3,30 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class StartPage extends JFrame {
-    public static void StartGui() {
-        JFrame frame = new JFrame("Beaver Frogger");
-        JPanel panel = new JPanel();
+    public static final int WINDOW_WIDTH = 725;
+    public static final int WINDOW_HEIGHT = 820;
 
-        JLabel title = new JLabel("BEAVER FROGGER");
+    private JPanel panel;
+    private JFrame frame;
+    private JLabel title;
+    private JButton start, exit;
+
+    public StartPage() {
+        frame = new JFrame("Beaver Frogger");
+        panel = new JPanel();
+
+        title = new JLabel("BEAVER FROGGER");
         title.setFont(new Font("Tahoma", Font.PLAIN, 50));
         title.setBounds(152, 195, 484, 64);
 
-        JButton start = new JButton("Start");
+        start = new JButton("Start");
         start.setFont(new Font("Tahoma", Font.PLAIN, 34));
         start.setBounds(240, 446, 218, 64);
 
-        JButton exit = new JButton("Exit");
+        exit = new JButton("Exit");
         exit.setFont(new Font("Tahoma", Font.PLAIN, 34));
         exit.setBounds(240, 564, 218, 64);
 
@@ -29,16 +38,19 @@ public class StartPage extends JFrame {
 
         frame.add(panel);
         frame.setResizable(false);
-        frame.setBounds(100, 100, 725, 820);
+        frame.setBounds(100, 100, WINDOW_WIDTH, WINDOW_HEIGHT);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-//        start.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//            }
-//        });
+        start.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainGameplay gp = new mainGameplay();
+
+                gp.setVisible(true);
+                frame.dispose();
+            }
+        });
 
         exit.addActionListener(new ActionListener() {
             @Override
@@ -49,6 +61,6 @@ public class StartPage extends JFrame {
     }
 
     public static void main(String[] args) {
-        StartGui();
+        new StartPage();
     }
 }
