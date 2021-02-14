@@ -29,7 +29,6 @@ public class KeyManagerGUI implements KeyListener
 
 	public void keyTyped(KeyEvent e) 
 	{
-		
 	}
 	/*Checks to see if any given key has been pressed.
 	*@Param KeyEvent e, a key to check if it's being pressed.
@@ -37,6 +36,7 @@ public class KeyManagerGUI implements KeyListener
 	public void keyPressed(KeyEvent e)
 	{
 		//checks if a key has been pressed
+		System.out.println("A key has been pressed!");
 		keys[e.getKeyCode()] = true;
 	}
 	/*Checks to see any given key has been released. 
@@ -44,6 +44,7 @@ public class KeyManagerGUI implements KeyListener
 	*/
 	public void keyReleased(KeyEvent e) 
 	{
+		System.out.println("A Key has been released!");
 		//checks if a key has been released
 		keys[e.getKeyCode()] = false;
 	}
