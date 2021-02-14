@@ -4,10 +4,11 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Background extends JFrame {
-    public static void BackGui() throws IOException {
+    public Background() throws IOException {
         JFrame frame = new JFrame();
         JPanel top = new JPanel();
         JPanel middleTop = new JPanel();
@@ -18,8 +19,8 @@ public class Background extends JFrame {
         contentPane.setBorder(new EmptyBorder(5,5,5,5));
         contentPane.setLayout(null);
 
-        BufferedImage topImage = ImageIO.read(new File("src/Water_background.png"));
-        BufferedImage bottomImage = ImageIO.read(new File("src/RoadBackground.png"));
+        BufferedImage topImage = ImageIO.read(new FileInputStream("E:\\Hackaton 2021\\artemishunters\\Water background.png"));
+        BufferedImage bottomImage = ImageIO.read(new FileInputStream("E:\\Hackaton 2021\\artemishunters\\RoadBackground.png"));
 
         top.setBounds(0,0,710,196);
         contentPane.add(top);
@@ -57,6 +58,6 @@ public class Background extends JFrame {
     }
 
     public static void main(String[] args) throws IOException {
-        BackGui();
-   }
+        new Background();
+    }
 }
